@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gesture Classifier Pro</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Panel for Controls -->
+        <div class="panel left-panel">
+            <header>
+                <h1>Gesture Classifier Pro</h1>
+            </header>
+            <nav>
+                <div class="menu-item" id="train-new-model-btn">Train New Model</div>
+                <div class="menu-item" id="existing-models-btn">Existing Models (<span id="model-count">0</span>)</div>
+            </nav>
+            <div class="content-area" id="dynamic-content">
+                <!-- Dynamic UI will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Right Panel for Camera -->
+        <div class="panel right-panel">
+            <div class="camera-wrapper">
+                <div class="camera-container">
+                    <video id="camera-feed" autoplay playsinline></video>
+                    <div id="camera-overlay">
+                        <p id="status-message">Camera is off</p>
+                        <p id="prediction-output"></p>
+                    </div>
+                </div>
+                <div class="camera-controls" id="camera-controls-container">
+                    <!-- Camera selection and buttons will be injected here by script.js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>

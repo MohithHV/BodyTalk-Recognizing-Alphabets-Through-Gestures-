@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling on the body */
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(45deg, #4c2a85, #8a4ca8);
+}
+
+.main-container {
+    display: flex;
+    height: 100%;
+}
+
+.panel {
+    height: 100%;
+    box-sizing: border-box; /* Include padding in height/width */
+}
+
+.left-panel {
+    flex: 0 0 450px; /* Fixed width for the left panel */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-panel {
+    flex: 1; /* Takes up the remaining space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+header h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-item.active, .menu-item:hover {
+    background-color: #fff;
+    color: #4c2a85;
+}
+
+.content-area {
+    flex: 1; /* Allows this area to grow and scroll */
+    overflow-y: auto; /* Enable vertical scrolling only if needed */
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.camera-container {
+    width: 100%;
+    max-width: 90vh; /* Limit by viewport height to maintain aspect ratio */
+    aspect-ratio: 4 / 3;
+    position: relative;
+    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#camera-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+#camera-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#status-message, #prediction-output {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
+
+/* General UI elements styling */
+.content-section h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.model-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.model-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.model-card:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Other styles from previous version adapted for the new layout */
+input[type="text"] { width: calc(100% - 24px); padding: 12px; background-color: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; color: #e0e0e0; margin-bottom: 15px; }
+button { display: block; width: 100%; background-color: #fff; color: #4c2a85; border: none; padding: 12px; font-size: 1rem; border-radius: 5px; cursor: pointer; transition: background-color 0.2s; margin-top: 10px; }
+button:hover { background-color: #ddd; }
+
+.model-actions {
+    margin-top: 10px;
+}
+
+.model-actions button {
+    width: auto;
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.model-actions .delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.model-actions .delete-btn:hover {
+    background-color: #c82333;
+}
+
+.tag-input-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.tags-display {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 5px;
+}
+
+.tag {
+    background-color: #6a1b9a; /* A slightly darker purple */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.remove-tag-btn {
+    margin-left: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.remove-tag-btn:hover {
+    color: white;
+}
+
+.multi-select-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #e0e0e0;
+}
+
+.multi-select-container input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 20px 0;
+}
+
+.content-section p {
+    color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.content-section ul {
+    color: #e0e0e0;
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.content-section ul li {
+    margin-bottom: 5px;
+}
